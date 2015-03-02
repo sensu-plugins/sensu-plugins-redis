@@ -1,18 +1,22 @@
-## Sensu-Plugins-disk-checks
+## Sensu-Plugins-redis
 
-[![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-redis.svg?branch=master)][1]
-[![Gem Version](https://badge.fury.io/rb/sensu-plugins-redis.svg)][2]
-[![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis/badges/gpa.svg)][3]
-[![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis/badges/coverage.svg)][4]
-[![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-redis.svg)][5]
+[![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-redis.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-redis)
+[![Gem Version](https://badge.fury.io/rb/sensu-plugins-redis.svg)](http://badge.fury.io/rb/sensu-plugins-redis)
+[![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis)
+[![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis)
+[![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-redis.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-redis)
 
 ## Functionality
 
 ## Files
- *
- *
- *
- *
+ * bin/check-redis-info
+ * bin/check-redis-list-length
+ * bin/check-redis-memory
+ * bin/check-redis-ping
+ * bin/check-redis-slave-status
+ * bin/extension-redis-output
+ * bin/metrics-redis-graphite
+ * bin/metrics-redis-llen
 
 ## Usage
 
