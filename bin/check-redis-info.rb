@@ -15,7 +15,7 @@
 # Heavily inspired in check-redis-slave-status.rb
 # https://github.com/sensu/sensu-community-plugins/blob/master/plugins/redis/check-redis-slave-status.rb
 #
-require 'rubygems' if RUBY_VERSION < '1.9.0'
+
 require 'sensu-plugin/check/cli'
 require 'redis'
 
