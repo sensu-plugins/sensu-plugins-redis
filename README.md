@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-redis.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-redis)
+[ ![Codeship Status for sensu-plugins/sensu-plugins-redis](https://codeship.com/projects/e211de50-e89a-0132-adeb-62885e5c211b/status?branch=master)](https://codeship.com/projects/82841)
 
 ## Functionality
 
@@ -25,9 +26,3 @@
 [Installation and Setup](https://github.com/sensu-plugins/documentation/blob/master/user_docs/installation_instructions.md)
 
 ## Notes
-
-[1]:[https://travis-ci.org/sensu-plugins/sensu-plugins-redis]
-[2]:[http://badge.fury.io/rb/sensu-plugins-redis]
-[3]:[https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis]
-[4]:[https://codeclimate.com/github/sensu-plugins/sensu-plugins-redis]
-[5]:[https://gemnasium.com/sensu-plugins/sensu-plugins-redis]
