@@ -63,6 +63,12 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
          description: 'Redis list KEY to check',
          required: true
 
+  option :warn_conn,
+         long: '--warn-conn-failure',
+         boolean: true,
+         description: 'Warning instead of critical on connection failure',
+         default: false
+
   def run
     options = { host: config[:host], port: config[:port], db: config[:database] }
     options[:password] = config[:password] if config[:password]
@@ -78,6 +84,11 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
       ok "Redis list #{config[:key]} length is below thresholds"
     end
   rescue
-    unknown "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    if config[:warn_conn]
+      warning message
+    else
+      critical message
+    end
   end
 end

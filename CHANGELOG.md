@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased][unreleased]
-- nothing
+### Changed
+- configurable exist status on failure (default: critical)
 
 ## [0.0.4] - 2015-08-04
 ### Changed
