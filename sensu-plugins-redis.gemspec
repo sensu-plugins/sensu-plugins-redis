@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.description            = 'Sensu plugins for redis'
   s.email                  = '<sensu-users@googlegroups.com>'
   s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
-  s.executables            = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.executables            = Dir.glob('bin/**/*').map { |file| File.basename(file) }
   s.homepage               = 'https://github.com/sensu-plugins/sensu-plugins-redis'
   s.license                = 'MIT'
   s.metadata               = { 'maintainer'         => '@mattyjones',
