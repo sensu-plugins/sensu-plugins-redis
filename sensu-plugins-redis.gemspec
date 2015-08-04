@@ -15,7 +15,11 @@ Gem::Specification.new do |s|
   s.authors                = ['Sensu-Plugins and contributors']
   s.cert_chain             = ['certs/sensu-plugins.pem']
   s.date                   = Date.today.to_s
-  s.description            = 'Sensu plugins for redis'
+  s.description            = 'This plugin provides native Redis instrumentation
+                              for monitoring and metrics collection, including:
+                              service health, database connectivity, replication
+                              status, `INFO` metrics, key counts, list lengths,
+                              and more.'
   s.email                  = '<sensu-users@googlegroups.com>'
   s.files                  = Dir.glob('{bin,lib}/**/*.rb') + %w(LICENSE README.md CHANGELOG.md)
   s.executables            = Dir.glob('bin/**/*').map { |file| File.basename(file) }
