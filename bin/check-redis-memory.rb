@@ -10,7 +10,6 @@
 
 require 'sensu-plugin/check/cli'
 require 'redis'
- 
 class RedisChecks < Sensu::Plugin::Check::CLI
   option :host,
          short: '-h HOST',
@@ -60,7 +59,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     memory_in_use = redis.info.fetch('used_memory').to_f.div(1024) # used memory in KB (KiloBytes)
     total_memory = `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f  # total memory of system in KB
 
-    used_memory = (( memory_in_use / total_memory)*100).round(2)
+    used_memory = ((memory_in_use / total_memory) * 100).round(2)
     warn_memory = config[:warn_mem]
     crit_memory = config[:crit_mem]
     if used_memory >= crit_memory
