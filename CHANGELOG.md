@@ -15,7 +15,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Changed
 - updated sensu-plugin gem to 1.2.0
 
-## [0.0.2 - 2015-07-05]
+## [0.0.2] - 2015-07-05
 ### Added
 - Add check for existance of Redis keys
 
@@ -23,6 +23,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - Fixed the gemspec to properly install the plugins to the embedded sensu bin dir
 
 ## 0.0.1 - 2015-05-31
-
 ### Added
 - initial release
+
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.4...HEAD
+[0.0.4]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.3...0.0.4
+[0.0.3]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.2...0.0.3
+[0.0.2]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.1...0.0.2
