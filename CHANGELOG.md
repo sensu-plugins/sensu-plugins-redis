@@ -6,6 +6,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased][unreleased]
 - nothing
 
+## [0.0.4] - 2016-03-22
+### Added
+- added support for memory check using percentage %
+
 ## [0.0.4] - 2015-08-04
 ### Changed
 - general clean no code changes

@@ -1,12 +1,31 @@
-#!/usr/bin/env ruby
+#! /usr/bin/env ruby
 #
-# Checks Redis INFO stats and limits values
-# ===
+#   check-redis-memory-percentage
 #
-# Copyright (c) 2012, Panagiotis Papadomitsos <pj@ezgr.net>
+# DESCRIPTION:
+#   check redis memory usage in percentage
 #
-# Released under the same terms as Sensu (the MIT license); see LICENSE
-# for details.
+# OUTPUT:
+#   Criticality of memory usage by redis
+#
+# PLATFORMS:
+#   Linux but not tested (Windows, BSD, Solaris, etc)
+#
+# DEPENDENCIES:
+#   gem: sensu-plugin
+#   system: awk, pattern scanning and processing language
+#
+# USAGE:
+#   set warning and critical threshold for checks, option are verbose enough
+#
+# NOTES:
+#   this script compares redis memory usage with system's total memory pulled from /proc/meminfo
+#
+# LICENSE:
+#   Milan Thapa <milans.thapa78@gmail.com>
+#   Released under the same terms as Sensu (the MIT license); see LICENSE
+#   for details.
+#
 
 require 'sensu-plugin/check/cli'
 require 'redis'
@@ -34,14 +53,14 @@ class RedisChecks < Sensu::Plugin::Check::CLI
   option :warn_mem,
          short: '-w percentage',
          long: '--warnmem percentage',
-         description: "Allocated % of Redis memory on which we'll issue a WARNING",
+         description: "Allocated % of Redis memory usage on which we'll issue a WARNING",
          proc: proc(&:to_i),
          required: true
 
   option :crit_mem,
          short: '-c percentage',
          long: '--critmem percentage',
-         description: "Allocated % of Redis memory on which we'll issue a CRITICAL",
+         description: "Allocated % of Redis memory usage on which we'll issue a CRITICAL",
          proc: proc(&:to_i),
          required: true
 
