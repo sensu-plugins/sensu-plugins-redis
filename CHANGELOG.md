@@ -3,17 +3,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
-## [Unreleased][unreleased]
-- nothing
+## [Unreleased]
 
-## [0.0.4] - 2016-03-22
+## [0.1.0] - 2016-03-22
 ### Added
 - added support for memory check using percentage %
 
 ## [0.0.4] - 2015-08-04
 ### Changed
 - general clean no code changes
-
 
 ## [0.0.3] - 2015-07-14
 ### Changed
@@ -30,7 +28,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.4...HEAD
-[0.0.4]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.3...0.0.4
-[0.0.3]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.2...0.0.3
-[0.0.2]: https://github.com/sensu-plugins/sensu-plugins-iis/compare/0.0.1...0.0.2
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.0.4...0.1.0
+[0.0.4]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.0.3...0.0.4
+[0.0.3]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.0.2...0.0.3
+[0.0.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.0.1...0.0.2
