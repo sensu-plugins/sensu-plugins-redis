@@ -26,6 +26,12 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          long: '--password PASSWORD',
          description: 'Redis Password to connect with'
 
+  option :warn_conn,
+         long: '--warn-conn-failure',
+         boolean: true,
+         description: 'Warning instead of critical on connection failure',
+         default: false
+
   def run
     options = { host: config[:host], port: config[:port] }
     options[:password] = config[:password] if config[:password]
@@ -44,6 +50,11 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
     critical "Redis server on #{config[:host]}:#{config[:port]} is master"
 
   rescue
-    critical "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    if config[:warn_conn]
+      warning message
+    else
+      critical message
+    end
   end
 end

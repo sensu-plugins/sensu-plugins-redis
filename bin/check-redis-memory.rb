@@ -46,10 +46,10 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          required: true
 
-  option :crit_conn,
-         long: '--crit-conn-failure',
+  option :warn_conn,
+         long: '--warn-conn-failure',
          boolean: true,
-         description: 'Critical instead of warning on connection failure',
+         description: 'Warning instead of critical on connection failure',
          default: false
 
   def run
@@ -69,10 +69,10 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     end
   rescue
     message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
-    if config[:crit_conn]
-      critical message
-    else
+    if config[:warn_conn]
       warning message
+    else
+      critical message
     end
   end
 end

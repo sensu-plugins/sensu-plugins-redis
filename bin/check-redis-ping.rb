@@ -51,6 +51,12 @@ class RedisPing < Sensu::Plugin::Check::CLI
          long: '--password PASSWORD',
          description: 'Redis Password to connect with'
 
+  option :warn_conn,
+         long: '--warn-conn-failure',
+         boolean: true,
+         description: 'Warning instead of critical on connection failure',
+         default: false
+
   def redis_options
     {
       host:     config[:host],
@@ -67,7 +73,11 @@ class RedisPing < Sensu::Plugin::Check::CLI
     end
 
   rescue
-    message "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
-    exit 1
+    message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    if config[:warn_conn]
+      warning message
+    else
+      critical message
+    end
   end
 end
