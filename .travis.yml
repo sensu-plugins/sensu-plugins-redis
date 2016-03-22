@@ -24,7 +24,7 @@ deploy:
     secure: Nx//keKnx9rs/hJN9RtQ72iXs+ZRTX4t7vuyOdxDEay8htD3HTMOsFSvwQopzDcArNrsCvIB81M/SXDBTBp7ECsLR2YZAsTYix2Jjt5oKl0ltByGkPGQtqe9q3kSt494Z8CzCi/nuXaYABElF3Dd4bUGa3Q4iQHAnZb3/NyeQiQ=
   gem: sensu-plugins-redis
   on:
-    ags: true
+    tags: true
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
