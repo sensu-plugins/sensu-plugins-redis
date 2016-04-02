@@ -61,11 +61,11 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     warn_memory = config[:warn_mem]
     crit_memory = config[:crit_mem]
     if used_memory >= crit_memory
-      critical "Redis running on #{config[:host]}:#{config[:port]} is above the CRITICAL limit: #{used_memory} KB used / #{crit_memory} KB limit"
+      critical "Redis running on #{config[:host]}:#{config[:port]} is above the CRITICAL limit: #{used_memory}KB used / #{crit_memory}KB limit"
     elsif used_memory >= warn_memory
-      warning "Redis running on #{config[:host]}:#{config[:port]} is above the WARNING limit: #{used_memory} KB used / #{warn_memory} KB limit"
+      warning "Redis running on #{config[:host]}:#{config[:port]} is above the WARNING limit: #{used_memory}KB used / #{warn_memory}KB limit"
     else
-      ok 'Redis memory usage is below defined limits'
+      ok "Redis memory usage: #{used_memory}KB is below defined limits"
     end
   rescue
     message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
