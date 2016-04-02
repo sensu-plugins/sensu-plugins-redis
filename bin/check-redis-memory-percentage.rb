@@ -6,7 +6,7 @@
 #   check redis memory usage in percentage
 #
 # OUTPUT:
-#   Criticality of memory usage by redis
+#   Criticality of memory usage by redis. Eg: https://git.io/vaQpe
 #
 # PLATFORMS:
 #   Linux but not tested (Windows, BSD, Solaris, etc)
@@ -86,7 +86,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     elsif used_memory >= warn_memory
       warning "Redis running on #{config[:host]}:#{config[:port]} is above the WARNING limit: #{used_memory} % used / #{warn_memory}%"
     else
-      ok 'Redis memory usage: #{used_memory} is below defined limits'
+      ok "Redis memory usage: #{used_memory} is below defined limits"
     end
   rescue
     message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
