@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- metrics-redis-graphite: add commandstats metrics (@PhilGuay)
 
 ## [1.0.0] - 2016-05-23
 ### Added
