@@ -70,12 +70,13 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
 
     t = redis.type(config[:key])
 
-    if t == "hash"
-      length = redis.hlen(config[:key])
-    elsif t == "set"
-      length = redis.scard(config[:key])
+    length = case t
+    when 'hash'
+      redis.hlen(config[:key])
+    when 'set'
+      redis.scard(config[:key])
     else
-      length = redis.llen(config[:key])
+      redis.llen(config[:key])
     end
     
     if length >= config[:crit]
