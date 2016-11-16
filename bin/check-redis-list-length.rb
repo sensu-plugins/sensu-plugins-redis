@@ -63,19 +63,38 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
          description: 'Redis list KEY to check',
          required: true
 
+  option :threshold,
+         short: '-t COMPARISON',
+         long: '--threshold COMPARISON',
+         description: 'Trigger if key lenght is above or below threshold',
+         required: false,
+         default: 'above',
+         in: [ 'above', 'below' ]
+
   def run
     options = { host: config[:host], port: config[:port], db: config[:database] }
     options[:password] = config[:password] if config[:password]
+    compare = config[:threshold]
     redis = Redis.new(options)
 
     length = redis.llen(config[:key])
 
-    if length >= config[:crit]
-      critical "Redis list #{config[:key]} length is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
-    elsif length >= config[:warn]
-      warning "Redis list #{config[:key]} length is above the WARNING limit: #{length} length / #{config[:warn]} limit"
+    if compare == 'below'
+      if length <= config[:crit]
+        critical "Redis list #{config[:key]} is below the CRITICAL limit: #{length} length / #{config[:crit]} limit"
+      elsif length <= config[:warn]
+        warning "Redis list #{config[:key]} length is below the WARNING limit: #{length} length / #{config[:warn]} limit"
+      else
+        ok "Redis list #{config[:key]} length is above thresholds"
+      end
     else
-      ok "Redis list #{config[:key]} length is below thresholds"
+      if length >= config[:crit]
+        critical "Redis list #{config[:key]} is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
+      elsif length <= config[:warn]
+        warning "Redis list #{config[:key]} length is above the WARNING limit: #{length} length / #{config[:warn]} limit"
+      else
+        ok "Redis list #{config[:key]} length is below thresholds"
+      end
     end
   rescue
     unknown "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
