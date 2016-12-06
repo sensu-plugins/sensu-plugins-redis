@@ -70,13 +70,18 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          description: 'Critical instead of warning on connection failure',
          default: false
 
+  def system_memory
+    `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f * 1024
+  end
+
   def run
     options = { host: config[:host], port: config[:port] }
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 
-    memory_in_use = redis.info.fetch('used_memory').to_f.div(1024) # used memory in KB (KiloBytes)
-    total_memory = `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f  # total memory of system in KB
+    redis_info = redis.info
+    memory_in_use = redis_info.fetch('used_memory').to_f.div(1024)             # used memory in KB (KiloBytes)
+    total_memory = redis_info.fetch('maxmemory', system_memory).to_f.div(1024) # max memory (if specified) in KB
 
     used_memory = ((memory_in_use / total_memory) * 100).round(2)
     warn_memory = config[:warn_mem]
