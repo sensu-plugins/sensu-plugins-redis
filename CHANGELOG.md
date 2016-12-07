@@ -6,6 +6,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased]
 ### Added
 - metrics-redis-graphite: add commandstats metrics (@PhilGuay)
+### Changed
+- check-redis-memory-percentage use maxmemory property if available
 
 ## [1.0.0] - 2016-05-23
 ### Added
