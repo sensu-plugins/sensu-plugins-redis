@@ -8,6 +8,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - metrics-redis-graphite: add commandstats metrics (@PhilGuay)
 ### Changed
 - check-redis-memory-percentage use maxmemory property if available
+- check-redis-slave-status: do not throw error if server is master
 
 ## [1.0.0] - 2016-05-23
 ### Added
