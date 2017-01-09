@@ -31,7 +31,9 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 
-    if redis.info.fetch('master_link_status') == 'up'
+    if redis.info.fetch('role') == 'master'
+      ok 'This redis server is master'
+    elsif redis.info.fetch('master_link_status') == 'up'
       ok 'The redis master links status is up!'
     else
       msg = ''
@@ -41,7 +43,7 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
     end
 
   rescue KeyError
-    critical "Redis server on #{config[:host]}:#{config[:port]} is master"
+    critical "Redis server on #{config[:host]}:#{config[:port]} is not master and does not have master_link_status"
 
   rescue
     critical "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
