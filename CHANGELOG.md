@@ -4,12 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## [1.1.0] - 2017-05-02
 ### Added
 - metrics-redis-graphite: add commandstats metrics (@PhilGuay)
 ### Changed
-- check-redis-memory-percentage use maxmemory property if available
-- check-redis-memory-percentage fix float conversion bug
-- check-redis-slave-status: do not throw error if server is master
+- check-redis-memory-percentage use maxmemory property if available (@andyroyle)
+- check-redis-memory-percentage fix float conversion bug (@andyroyle)
+- check-redis-slave-status: do not throw error if server is master (@stevenviola)
 
 ## [1.0.0] - 2016-05-23
 ### Added
@@ -47,7 +48,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.1.0...1.0.0
 [0.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.0.4...0.1.0
 [0.0.4]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/0.0.3...0.0.4
