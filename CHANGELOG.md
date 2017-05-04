@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Changed
+- check-redis-memory-percentage: Handle case where maxmemory is 0 (@stevenviola)
+
 ## [1.1.1] - 2017-05-05
 ### Fixed
 - updated gemspec to avoid deprecation warnings in redis client for Fixnum
