@@ -93,7 +93,15 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
     else
       ok "Redis list #{config[:key]} length is below thresholds"
     end
-  rescue
+  rescue Redis::CommandError => error
+    if error.message =~ /WRONGTYPE/
+      unknown "Key provided (#{config[:key]}) is not a list"
+    else
+      unknown "A Redis command error occured #{error.message}"
+    end
+  rescue Redis::CannotConnectError
     unknown "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+  rescue
+    unknown 'An unkown error occured'
   end
 end
