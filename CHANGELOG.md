@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## [1.1.1] - 2017-05-05
+### Fixed
+- updated gemspec to avoid deprecation warnings in redis client for Fixnum
+
 ## [1.1.0] - 2017-05-02
 ### Added
 - metrics-redis-graphite: add commandstats metrics (@PhilGuay)
