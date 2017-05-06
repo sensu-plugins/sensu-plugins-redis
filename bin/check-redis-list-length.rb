@@ -74,27 +74,29 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
   def run
     options = { host: config[:host], port: config[:port], db: config[:database] }
     options[:password] = config[:password] if config[:password]
-    compare = config[:threshold]
-    redis = Redis.new(options)
 
+    check_length_is_above_threshold = false
+    if config[:warn] > config[:crit]
+      check_length_is_above_threshold = true
+    end
+
+    redis = Redis.new(options)
     length = redis.llen(config[:key])
 
-    if compare == 'below'
-      if length <= config[:crit]
-        critical "Redis list #{config[:key]} is below the CRITICAL limit: #{length} length / #{config[:crit]} limit"
-      elsif length <= config[:warn]
-        warning "Redis list #{config[:key]} length is below the WARNING limit: #{length} length / #{config[:warn]} limit"
-      else
-        ok "Redis list #{config[:key]} length is above thresholds"
-      end
+    if check_length_is_above_threshold && length <= config[:crit]
+      critical "Redis list #{config[:key]} is below or equal to the CRITICAL limit: #{length} length / #{config[:crit]} limit"
+    elsif check_length_is_above_threshold && length <= config[:warn]
+      warning "Redis list #{config[:key]} length is below or equal to the WARNING limit: #{length} length / #{config[:warn]} limit"
+    elsif check_length_is_above_threshold
+      ok "Redis list #{config[:key]} length is above thresholds"
+    end
+
+    if length >= config[:crit]
+      critical "Redis list #{config[:key]} is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
+    elsif length <= config[:warn]
+      warning "Redis list #{config[:key]} length is above the WARNING limit: #{length} length / #{config[:warn]} limit"
     else
-      if length >= config[:crit]
-        critical "Redis list #{config[:key]} is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
-      elsif length <= config[:warn]
-        warning "Redis list #{config[:key]} length is above the WARNING limit: #{length} length / #{config[:warn]} limit"
-      else
-        ok "Redis list #{config[:key]} length is below thresholds"
-      end
+      ok "Redis list #{config[:key]} length is below thresholds"
     end
   rescue
     unknown "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
