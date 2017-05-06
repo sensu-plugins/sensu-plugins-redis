@@ -63,13 +63,8 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
          description: 'Redis list KEY to check',
          required: true
 
-  option :threshold,
-         short: '-t COMPARISON',
-         long: '--threshold COMPARISON',
-         description: 'Trigger if key lenght is above or below threshold',
-         required: false,
-         default: 'above',
-         in: [ 'above', 'below' ]
+  banner "Usage: #{File.basename($PROGRAM_NAME)} (options)\n" \
+    'Number of items in list key will have to be below threshold if warning is smaller than critical, and above otherwise'
 
   def run
     options = { host: config[:host], port: config[:port], db: config[:database] }
