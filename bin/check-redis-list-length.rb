@@ -80,14 +80,14 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 
-    length = case redis.type(config[:key])
-             when 'hash'
+    length =  case redis.type(config[:key])
+              when 'hash'
                 redis.hlen(config[:key])
-             when 'set'
+              when 'set'
                 redis.scard(config[:key])
-             else
+              else
                 redis.llen(config[:key])
-             end
+              end
 
     if length >= config[:crit]
       critical "Redis list #{config[:key]} length is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
