@@ -80,8 +80,12 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     redis = Redis.new(options)
 
     redis_info = redis.info
-    memory_in_use = redis_info.fetch('used_memory').to_f.div(1024).to_f             # used memory in KB (KiloBytes)
-    total_memory = redis_info.fetch('maxmemory', system_memory).to_f.div(1024).to_f # max memory (if specified) in KB
+    max_memory = redis_info.fetch('maxmemory', 0).to_i
+    if max_memory == 0
+      max_memory = redis_info.fetch('total_system_memory', system_memory).to_i
+    end
+    memory_in_use = redis_info.fetch('used_memory').to_i.fdiv(1024) # used memory in KB (KiloBytes)
+    total_memory = max_memory.fdiv(1024)                            # max memory (if specified) in KB
 
     used_memory = ((memory_in_use / total_memory) * 100).round(2)
     warn_memory = config[:warn_mem]
