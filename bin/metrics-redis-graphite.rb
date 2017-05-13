@@ -14,13 +14,38 @@ require 'redis'
 
 class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
   # redis.c - sds genRedisInfoString(char *section)
-  SKIP_KEYS_REGEX = ['gcc_version', 'master_host', 'master_link_status',
-                     'master_port', 'mem_allocator', 'multiplexing_api', 'process_id',
-                     'redis_git_dirty', 'redis_git_sha1', 'redis_version', '^role',
-                     'run_id', '^slave', 'used_memory_human', 'used_memory_peak_human',
-                     'redis_mode', 'os', 'arch_bits', 'tcp_port',
-                     'rdb_last_bgsave_status', 'aof_last_bgrewrite_status', 'config_file',
-                     'redis_build_id'].freeze
+  SKIP_KEYS_REGEX = [
+    '^role',
+    '^slave',
+    'aof_last_bgrewrite_status',
+    'aof_last_write_status',
+    'arch_bits',
+    'config_file',
+    'executable',
+    'gcc_version',
+    'master_host',
+    'master_link_status',
+    'master_port',
+    'mem_allocator',
+    'multiplexing_api',
+    'maxmemory_human',
+    'maxmemory_policy',
+    'os',
+    'process_id',
+    'rdb_last_bgsave_status',
+    'redis_build_id',
+    'redis_git_dirty',
+    'redis_git_sha1',
+    'redis_mode',
+    'redis_version',
+    'run_id',
+    'tcp_port',
+    'total_system_memory_human',
+    'used_memory_human',
+    'used_memory_lua_human',
+    'used_memory_peak_human',
+    'used_memory_rss_human'
+  ].freeze
 
   option :host,
          short: '-h HOST',
@@ -60,6 +85,12 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
          proc: proc(&:to_i),
          default: Redis::Client::DEFAULTS[:reconnect_attempts]
 
+  option :skip_keys_regex,
+         description: 'a comma seperated list of keys to be skipped',
+         short: '-k',
+         long: '--skipkeys',
+         default: nil
+
   def run
     options = {
       host: config[:host],
@@ -69,9 +100,14 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     }
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
+    skip_keys = if !config[:skip_keys_regex].nil?
+                  config[:skip_keys_regex].split(',')
+                else
+                  SKIP_KEYS_REGEX
+                end
 
     redis.info.each do |k, v|
-      next unless SKIP_KEYS_REGEX.map { |re| k.match(/#{re}/) }.compact.empty?
+      next unless skip_keys.map { |re| k.match(/#{re}/) }.compact.empty?
 
       # "db0"=>"keys=123,expires=12"
       if k =~ /^db/
