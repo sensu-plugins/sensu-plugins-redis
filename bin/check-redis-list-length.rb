@@ -15,6 +15,12 @@ require 'sensu-plugin/check/cli'
 require 'redis'
 
 class RedisListLengthCheck < Sensu::Plugin::Check::CLI
+  option :socket,
+         short: '-s SOCKET',
+         long: '--socket SOCKET',
+         description: 'Redis socket to connect to (overrides Host and Port)',
+         required: false
+
   option :host,
          short: '-h HOST',
          long: '--host HOST',
@@ -64,7 +70,13 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
          required: true
 
   def run
-    options = { host: config[:host], port: config[:port], db: config[:database] }
+    options = if config[:socket]
+                { path: socket }
+              else
+                { host: config[:host], port: config[:port] }
+              end
+
+    options[:db] = config[:database]
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 

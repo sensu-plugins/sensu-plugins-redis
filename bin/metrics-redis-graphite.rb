@@ -47,6 +47,12 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     'used_memory_rss_human'
   ].freeze
 
+  option :socket,
+         short: '-s SOCKET',
+         long: '--socket SOCKET',
+         description: 'Redis socket to connect to (overrides Host and Port)',
+         required: false
+
   option :host,
          short: '-h HOST',
          long: '--host HOST',
@@ -93,11 +99,17 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
   def run
     options = {
-      host: config[:host],
-      port: config[:port],
       timeout: config[:timeout],
       reconnect_attempts: config[:reconnect_attempts]
     }
+
+    if config[:socket]
+      options[:path] = config[:socket]
+    else
+      options[:host] = config[:host]
+      options[:port] = config[:port]
+    end
+
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
     skip_keys = if !config[:skip_keys_regex].nil?

@@ -20,6 +20,12 @@ require 'sensu-plugin/check/cli'
 require 'redis'
 
 class RedisSlaveCheck < Sensu::Plugin::Check::CLI
+  option :socket,
+         short: '-s SOCKET',
+         long: '--socket SOCKET',
+         description: 'Redis socket to connect to (overrides Host and Port)',
+         required: false
+
   option :host,
          short: '-h HOST',
          long: '--host HOST',
@@ -55,7 +61,12 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          default: 'master'
 
   def run
-    options = { host: config[:host], port: config[:port] }
+    options = if config[:socket]
+                { path: socket }
+              else
+                { host: config[:host], port: config[:port] }
+              end
+
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 
@@ -64,7 +75,6 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
     else
       critical "Redis #{config[:redis_info_key]} is #{redis.info.fetch(config[:redis_info_key].to_s)}!"
     end
-
   rescue
     message "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
     exit 1
