@@ -87,8 +87,8 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
   option :skip_keys_regex,
          description: 'a comma seperated list of keys to be skipped',
-         short: '-k',
-         long: '--skipkeys',
+         short: '-k KEYS',
+         long: '--skipkeys KEYS',
          default: nil
 
   def run

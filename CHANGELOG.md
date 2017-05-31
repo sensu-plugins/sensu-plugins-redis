@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## Fixed
+- metrics-redis-graphite: fix skipkeys option not accepting any argument (@boutetnico)
+
 ## [1.2.1] - 2017-05-14
 ## Fixed
 - Updated list of SKIP_KEYS_REGEX in metrics-redis-graphite.rb per #22 and added an option to override the list of keys to allow users to deal with changes without the need of a release (@majormoses)
