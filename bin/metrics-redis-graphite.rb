@@ -136,7 +136,7 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
     # Loop thru commandstats entries for perf metrics
     redis.info('commandstats').each do |k, v|
-      ['calls', 'usec_per_call', 'usec'].each do |x|
+      %w(calls usec_per_call usec).each do |x|
         output "#{config[:scheme]}.commandstats.#{k}.#{x}", v[x]
       end
     end
