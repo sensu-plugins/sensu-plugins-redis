@@ -11,6 +11,12 @@ require 'sensu-plugin/metric/cli'
 require 'redis'
 
 class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
+  option :socket,
+         short: '-s SOCKET',
+         long: '--socket SOCKET',
+         description: 'Redis socket to connect to (overrides Host and Port)',
+         required: false
+
   option :host,
          short: '-h HOST',
          long: '--host HOST',
@@ -42,7 +48,12 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          required: true
 
   def run
-    options = { host: config[:host], port: config[:port] }
+    options = if config[:socket]
+                { path: socket }
+              else
+                { host: config[:host], port: config[:port] }
+              end
+
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 
