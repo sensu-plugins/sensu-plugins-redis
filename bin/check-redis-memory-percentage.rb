@@ -6,7 +6,7 @@
 #   check redis memory usage in percentage
 #
 # OUTPUT:
-#   Criticality of memory usage by redis
+#   Criticality of memory usage by redis. Eg: https://git.io/vaQpe
 #
 # PLATFORMS:
 #   Linux but not tested (Windows, BSD, Solaris, etc)
