@@ -69,6 +69,9 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
          description: 'Redis list KEY to check',
          required: true
 
+  banner "Usage: #{File.basename($PROGRAM_NAME)} (options)\n" \
+    'Number of items in list key will have to be below threshold if warning is smaller than critical, and above otherwise'
+
   def run
     options = if config[:socket]
                 { path: socket }
@@ -78,18 +81,39 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
 
     options[:db] = config[:database]
     options[:password] = config[:password] if config[:password]
-    redis = Redis.new(options)
 
+    check_length_is_above_threshold = false
+    if config[:warn] > config[:crit]
+      check_length_is_above_threshold = true
+    end
+
+    redis = Redis.new(options)
     length = redis.llen(config[:key])
 
+    if check_length_is_above_threshold && length <= config[:crit]
+      critical "Redis list #{config[:key]} is below or equal to the CRITICAL limit: #{length} length / #{config[:crit]} limit"
+    elsif check_length_is_above_threshold && length <= config[:warn]
+      warning "Redis list #{config[:key]} length is below or equal to the WARNING limit: #{length} length / #{config[:warn]} limit"
+    elsif check_length_is_above_threshold
+      ok "Redis list #{config[:key]} length is above thresholds"
+    end
+
     if length >= config[:crit]
-      critical "Redis list #{config[:key]} length is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
-    elsif length >= config[:warn]
+      critical "Redis list #{config[:key]} is above the CRITICAL limit: #{length} length / #{config[:crit]} limit"
+    elsif length <= config[:warn]
       warning "Redis list #{config[:key]} length is above the WARNING limit: #{length} length / #{config[:warn]} limit"
     else
       ok "Redis list #{config[:key]} length is below thresholds"
     end
-  rescue
+  rescue Redis::CommandError => error
+    if error.message =~ /WRONGTYPE/
+      unknown "Key provided (#{config[:key]}) is not a list"
+    else
+      unknown "A Redis command error occured #{error.message}"
+    end
+  rescue Redis::CannotConnectError
     unknown "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+  rescue
+    unknown 'An unkown error occured'
   end
 end
