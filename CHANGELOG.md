@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+## [1.4.0] - 2017-06-24
+### Added
+- check-redis-list-length.rb support more datatypes to check (@nevins-b)
+
 ## [1.3.1] - 2017-05-31
 ### Fixed
 - metrics-redis-graphite: fix commandstats output (@boutetnico)
@@ -75,7 +79,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...HEAD
+[1.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.1...1.4.0
 [1.3.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.2.2...1.3.0
 [1.2.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.2.1...1.2.2
