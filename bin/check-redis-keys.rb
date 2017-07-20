@@ -68,6 +68,12 @@ class RedisKeysCheck < Sensu::Plugin::Check::CLI
          required: false,
          default: '*'
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'unknown',
+         in: %w(unknown warning critical ok)
+
   def run
     options = if config[:socket]
                 { path: socket }
@@ -89,6 +95,6 @@ class RedisKeysCheck < Sensu::Plugin::Check::CLI
       ok "Redis list #{config[:pattern]} length is above thresholds"
     end
   rescue
-    unknown "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end

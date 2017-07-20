@@ -97,6 +97,12 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
          long: '--skipkeys KEYS',
          default: nil
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'unknown',
+         in: %w(unknown warning critical ok)
+
   def run
     options = {
       timeout: config[:timeout],
@@ -142,5 +148,7 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     end
 
     ok
+  rescue
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end

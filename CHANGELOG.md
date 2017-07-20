@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Breaking Changes
+- Standardised exit status for Redis connection failures/timeouts to Unknown, with the exception of 'check-redis-ping' which will exit Critical
+
+### Added
+- Config option to override the default exit status on Redis connection failures/timeouts
+
 ### Added
 - ruby 2.4 testing on travis (@majormoses)
 

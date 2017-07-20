@@ -57,6 +57,12 @@ class RedisPing < Sensu::Plugin::Check::CLI
          long: '--password PASSWORD',
          description: 'Redis Password to connect with'
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'critical',
+         in: %w(unknown warning critical ok)
+
   def redis_options
     if config[:socket]
       {
@@ -78,9 +84,7 @@ class RedisPing < Sensu::Plugin::Check::CLI
     else
       critical 'Redis did not respond to the ping command'
     end
-
   rescue
-    message "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
-    exit 1
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end
