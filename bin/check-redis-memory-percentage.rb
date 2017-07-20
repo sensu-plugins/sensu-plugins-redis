@@ -76,6 +76,12 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          description: 'Critical instead of warning on connection failure',
          default: false
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'unknown',
+         in: %w(unknown warning critical ok)
+
   def system_memory
     `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f * 1024
   end
@@ -109,11 +115,6 @@ class RedisChecks < Sensu::Plugin::Check::CLI
       ok "Redis memory usage: #{used_memory}% is below defined limits"
     end
   rescue
-    message = "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
-    if config[:crit_conn]
-      critical message
-    else
-      warning message
-    end
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end

@@ -47,6 +47,12 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          description: 'Redis list KEY to check',
          required: true
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'unknown',
+         in: %w(unknown warning critical ok)
+
   def run
     options = if config[:socket]
                 { path: socket }
@@ -59,5 +65,7 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
 
     output "#{config[:scheme]}.#{config[:key]}.items", redis.llen(config[:key])
     ok
+  rescue
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end

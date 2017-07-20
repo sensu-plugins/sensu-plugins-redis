@@ -60,6 +60,12 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          required: false,
          default: 'master'
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'unknown',
+         in: %w(unknown warning critical ok)
+
   def run
     options = if config[:socket]
                 { path: socket }
@@ -76,7 +82,6 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
       critical "Redis #{config[:redis_info_key]} is #{redis.info.fetch(config[:redis_info_key].to_s)}!"
     end
   rescue
-    message "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
-    exit 1
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end

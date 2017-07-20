@@ -32,6 +32,12 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          long: '--password PASSWORD',
          description: 'Redis Password to connect with'
 
+  option :conn_failure_status,
+         long: '--conn-failure-status EXIT_STATUS',
+         description: 'Exit status for Redis connection failures',
+         default: 'unknown',
+         in: %w(unknown warning critical ok)
+
   def run
     options = if config[:socket]
                 { path: socket }
@@ -52,11 +58,9 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
       msg += " It has been down for #{redis.info.fetch('master_link_down_since_seconds')}."
       critical msg
     end
-
   rescue KeyError
     critical "Redis server on #{config[:host]}:#{config[:port]} is not master and does not have master_link_status"
-
   rescue
-    critical "Could not connect to Redis server on #{config[:host]}:#{config[:port]}"
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
   end
 end
