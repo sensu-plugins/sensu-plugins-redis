@@ -64,7 +64,7 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          long: '--conn-failure-status EXIT_STATUS',
          description: 'Exit status for Redis connection failures',
          default: 'unknown',
-         in: %w(unknown warning critical ok)
+         in: %w(unknown warning critical)
 
   def run
     options = if config[:socket]

@@ -80,7 +80,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          long: '--conn-failure-status EXIT_STATUS',
          description: 'Exit status for Redis connection failures',
          default: 'unknown',
-         in: %w(unknown warning critical ok)
+         in: %w(unknown warning critical)
 
   def system_memory
     `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f * 1024
