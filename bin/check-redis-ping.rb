@@ -59,7 +59,7 @@ class RedisPing < Sensu::Plugin::Check::CLI
 
   option :conn_failure_status,
          long: '--conn-failure-status EXIT_STATUS',
-         description: 'Exit status for Redis connection failures',
+         description: 'Returns the following exit status for Redis connection failures',
          default: 'critical',
          in: %w(unknown warning critical)
 

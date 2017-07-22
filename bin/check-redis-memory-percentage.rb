@@ -70,15 +70,9 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          required: true
 
-  option :crit_conn,
-         long: '--crit-conn-failure',
-         boolean: true,
-         description: 'Critical instead of warning on connection failure',
-         default: false
-
   option :conn_failure_status,
          long: '--conn-failure-status EXIT_STATUS',
-         description: 'Exit status for Redis connection failures',
+         description: 'Returns the following exit status for Redis connection failures',
          default: 'unknown',
          in: %w(unknown warning critical)
 
