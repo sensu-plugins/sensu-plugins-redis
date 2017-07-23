@@ -4,8 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [2.0.0] - 2017-07-23
 ### Breaking Changes
-- Standardised exit status for Redis connection failures/timeouts to Unknown, with the exception of 'check-redis-ping' which will exit Critical
+- Standardised exit status for Redis connection failures/timeouts to Unknown, with the exception of 'check-redis-ping' which will exit Critical (@Evesy)
+- check-redis-memory-percentage.rb, check-redis-memory.rb: removed redundant `crit_conn` (@Evesy)
 
 ### Added
 - Config option to override the default exit status on Redis connection failures/timeouts
@@ -87,7 +90,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...2.0.0
 [1.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.1...1.4.0
 [1.3.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.2.2...1.3.0
