@@ -73,7 +73,7 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
   option :scheme,
          description: 'Metric naming scheme, text to prepend to metric',
-         short: '-s SCHEME',
+         short: '-S SCHEME',
          long: '--scheme SCHEME',
          default: "#{Socket.gethostname}.redis"
 
