@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+- metrics-redis-graphite.rb, metrics-redis-llen.rb: rename short option for `--scheme` from `-s` to `-S` to resolve conflict.
 
 ## [2.0.0] - 2017-07-23
 ### Breaking Changes
