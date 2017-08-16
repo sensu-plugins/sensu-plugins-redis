@@ -30,6 +30,14 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          proc: proc(&:to_i),
          default: 6379
 
+  option :database,
+         short: '-n DATABASE',
+         long: '--dbnumber DATABASE',
+         description: 'Redis database number to connect to',
+         proc: proc(&:to_i),
+         required: false,
+         default: 0
+
   option :password,
          short: '-P PASSWORD',
          long: '--password PASSWORD',
@@ -60,6 +68,7 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
                 { host: config[:host], port: config[:port] }
               end
 
+    options[:db] = config[:database]
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 

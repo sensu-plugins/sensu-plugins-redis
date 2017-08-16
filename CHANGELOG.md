@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- metrics-redis-llen.rb config option to choose db
+
+### Fixed
+- check-redis-list-length.rb socket option referenced correctly
+- metrics-redis-llen.rb socket option referenced correctly
 
 ## [2.0.1] - 2017-08-15
 ### Fixed
