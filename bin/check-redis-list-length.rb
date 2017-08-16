@@ -77,7 +77,7 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
 
   def run
     options = if config[:socket]
-                { path: socket }
+                { path: config[:socket] }
               else
                 { host: config[:host], port: config[:port] }
               end
