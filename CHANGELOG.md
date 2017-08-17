@@ -4,7 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
-- metrics-redis-graphite.rb, metrics-redis-llen.rb: rename short option for `--scheme` from `-s` to `-S` to resolve conflict.
+
+## [2.0.1] - 2017-08-15
+### Fixed
+- metrics-redis-graphite.rb, metrics-redis-llen.rb: rename short option for `--scheme` from `-s` to `-S` to resolve conflict. (@stuwil)
 
 ## [2.0.0] - 2017-07-23
 ### Breaking Changes
@@ -91,7 +94,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.1...HEAD
+[2.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...2.0.0
 [1.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.1...1.4.0
 [1.3.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.0...1.3.1
