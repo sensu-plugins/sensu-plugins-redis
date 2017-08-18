@@ -4,12 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [2.1.0] - 2017-08-17
 ### Added
-- metrics-redis-llen.rb config option to choose db
+- metrics-redis-llen.rb config option to choose db (@athal7)
 
 ### Fixed
-- check-redis-list-length.rb socket option referenced correctly
-- metrics-redis-llen.rb socket option referenced correctly
+- check-redis-list-length.rb socket option referenced correctly (@athal7)
+- metrics-redis-llen.rb socket option referenced correctly (@athal7)
 
 ## [2.0.1] - 2017-08-15
 ### Fixed
@@ -100,7 +102,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...2.0.0
 [1.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.3.1...1.4.0
