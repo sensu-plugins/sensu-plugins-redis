@@ -74,11 +74,18 @@ class RedisKeysCheck < Sensu::Plugin::Check::CLI
          default: 'unknown',
          in: %w(unknown warning critical)
 
+  option :timeout,
+         short: '-t TIMEOUT',
+         long: '--timeout TIMEOUT',
+         description: 'Redis connection timeout',
+         required: false,
+         default: 5 
+
   def run
     options = if config[:socket]
                 { path: socket }
               else
-                { host: config[:host], port: config[:port] }
+                { host: config[:host], port: config[:port], timeout: config[:timeout] }
               end
 
     options[:db] = config[:database]
