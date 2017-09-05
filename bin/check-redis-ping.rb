@@ -63,6 +63,13 @@ class RedisPing < Sensu::Plugin::Check::CLI
          default: 'critical',
          in: %w(unknown warning critical)
 
+  option :timeout,
+         short: '-t TIMEOUT',
+         long: '--timeout TIMEOUT',
+         description: 'Redis connection timeout',
+         required: false,
+         default: 5 
+
   def redis_options
     if config[:socket]
       {
@@ -73,7 +80,8 @@ class RedisPing < Sensu::Plugin::Check::CLI
       {
         host:     config[:host],
         port:     config[:port],
-        password: config[:password]
+        password: config[:password],
+        timeout:  config[:timeout] 
       }
     end
   end

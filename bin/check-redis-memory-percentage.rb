@@ -76,6 +76,13 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          default: 'unknown',
          in: %w(unknown warning critical)
 
+  option :timeout,
+         short: '-t TIMEOUT',
+         long: '--timeout TIMEOUT',
+         description: 'Redis connection timeout',
+         required: false,
+         default: 5 
+
   def system_memory
     `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f * 1024
   end
@@ -84,7 +91,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     options = if config[:socket]
                 { path: socket }
               else
-                { host: config[:host], port: config[:port] }
+                { host: config[:host], port: config[:port], timeout: config[:timeout] }
               end
 
     options[:password] = config[:password] if config[:password]
