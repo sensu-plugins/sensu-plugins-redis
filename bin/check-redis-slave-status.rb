@@ -43,7 +43,7 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          long: '--timeout TIMEOUT',
          description: 'Redis connection timeout',
          required: false,
-         default: 5 
+         default: 5
 
   def run
     options = if config[:socket]

@@ -81,7 +81,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
          long: '--timeout TIMEOUT',
          description: 'Redis connection timeout',
          required: false,
-         default: 5 
+         default: 5
 
   def system_memory
     `awk '/MemTotal/{print$2}' /proc/meminfo`.to_f * 1024

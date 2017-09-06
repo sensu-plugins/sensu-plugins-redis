@@ -68,7 +68,7 @@ class RedisPing < Sensu::Plugin::Check::CLI
          long: '--timeout TIMEOUT',
          description: 'Redis connection timeout',
          required: false,
-         default: 5 
+         default: 5
 
   def redis_options
     if config[:socket]
@@ -81,7 +81,7 @@ class RedisPing < Sensu::Plugin::Check::CLI
         host:     config[:host],
         port:     config[:port],
         password: config[:password],
-        timeout:  config[:timeout] 
+        timeout:  config[:timeout]
       }
     end
   end

@@ -65,13 +65,13 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          description: 'Returns the following exit status for Redis connection failures',
          default: 'unknown',
          in: %w(unknown warning critical)
-         
+
   option :timeout,
          short: '-t TIMEOUT',
          long: '--timeout TIMEOUT',
          description: 'Redis connection timeout',
          required: false,
-         default: 5 
+         default: 5
 
   def run
     options = if config[:socket]
