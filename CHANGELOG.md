@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+### Added
+- All check files have timeout added (@empyrean987)
+
 ## [2.1.0] - 2017-08-17
 ### Added
 - metrics-redis-llen.rb config option to choose db (@athal7)
