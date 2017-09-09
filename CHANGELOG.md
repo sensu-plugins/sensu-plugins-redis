@@ -5,8 +5,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+## [2.2.0] - 2017-09-09
 ### Added
-- All check files have timeout added (@empyrean987)
+- All check scripts have a new option of `--timeout` (@empyrean987)
 
 ## [2.1.0] - 2017-08-17
 ### Added
@@ -105,7 +106,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.0...HEAD
+[2.2.0]:https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...2.0.0
