@@ -1,12 +1,17 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
+This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md).
+Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+### Changed
+- update location of our CHANGELOG guidelines (@majormoses)
+
+## [2.2.0] - 2017-09-09
 ### Added
-- All check files have timeout added (@empyrean987)
+- All check scripts have a new option of `--timeout` (@empyrean987)
 
 ## [2.1.0] - 2017-08-17
 ### Added
@@ -105,7 +110,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.0...HEAD
+[2.2.0]:https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/1.4.0...2.0.0
