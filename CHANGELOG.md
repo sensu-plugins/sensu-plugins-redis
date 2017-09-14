@@ -6,6 +6,9 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+### Fixed
+- ensure that `--timeout` option is an integer (@empyrean987)
+
 ### Changed
 - update location of our CHANGELOG guidelines (@majormoses)
 
