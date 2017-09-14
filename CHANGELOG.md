@@ -6,6 +6,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+## [2.2.1] - 2017-09-14
 ### Fixed
 - ensure that `--timeout` option is an integer (@empyrean987)
 
@@ -113,7 +114,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.1...HEAD
+[2.2.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.0...2.2.1
 [2.2.0]:https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.0.0...2.0.1
