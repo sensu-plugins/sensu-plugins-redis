@@ -78,6 +78,7 @@ class RedisKeysCheck < Sensu::Plugin::Check::CLI
          short: '-t TIMEOUT',
          long: '--timeout TIMEOUT',
          description: 'Redis connection timeout',
+         proc: proc(&:to_i),
          required: false,
          default: 5
 

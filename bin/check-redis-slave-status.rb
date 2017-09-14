@@ -43,6 +43,7 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
          long: '--timeout TIMEOUT',
          description: 'Redis connection timeout',
          required: false,
+         proc: proc(&:to_i),
          default: 5
 
   def run
