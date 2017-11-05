@@ -9,39 +9,10 @@
 
 require 'sensu-plugin/metric/cli'
 require 'redis'
+require_relative '../lib/redis_client_options'
 
 class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
-  option :socket,
-         short: '-s SOCKET',
-         long: '--socket SOCKET',
-         description: 'Redis socket to connect to (overrides Host and Port)',
-         required: false
-
-  option :host,
-         short: '-h HOST',
-         long: '--host HOST',
-         description: 'Redis Host to connect to',
-         default: '127.0.0.1'
-
-  option :port,
-         short: '-p PORT',
-         long: '--port PORT',
-         description: 'Redis Port to connect to',
-         proc: proc(&:to_i),
-         default: 6379
-
-  option :database,
-         short: '-n DATABASE',
-         long: '--dbnumber DATABASE',
-         description: 'Redis database number to connect to',
-         proc: proc(&:to_i),
-         required: false,
-         default: 0
-
-  option :password,
-         short: '-P PASSWORD',
-         long: '--password PASSWORD',
-         description: 'Redis Password to connect with'
+  include RedisClientOptions
 
   option :scheme,
          description: 'Metric naming scheme, text to prepend to metric',
@@ -55,29 +26,15 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          description: 'Comma separated list of keys to check',
          required: true
 
-  option :conn_failure_status,
-         long: '--conn-failure-status EXIT_STATUS',
-         description: 'Returns the following exit status for Redis connection failures',
-         default: 'unknown',
-         in: %w(unknown warning critical)
-
   def run
+    redis = Redis.new(default_redis_options)
+
     redis_keys = config[:key].split(',')
-    options = if config[:socket]
-                { path: socket }
-              else
-                { host: config[:host], port: config[:port] }
-              end
-
-    options[:db] = config[:database]
-    options[:password] = config[:password] if config[:password]
-    redis = Redis.new(options)
-
     redis_keys.each do |key|
       output "#{config[:scheme]}.#{key}.items", redis.llen(key)
     end
     ok
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
   end
 end

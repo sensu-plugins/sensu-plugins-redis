@@ -11,8 +11,11 @@
 
 require 'sensu-plugin/metric/cli'
 require 'redis'
+require_relative '../lib/redis_client_options'
 
 class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
+  include RedisClientOptions
+
   # redis.c - sds genRedisInfoString(char *section)
   SKIP_KEYS_REGEX = [
     '^role',
@@ -47,49 +50,11 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     'used_memory_rss_human'
   ].freeze
 
-  option :socket,
-         short: '-s SOCKET',
-         long: '--socket SOCKET',
-         description: 'Redis socket to connect to (overrides Host and Port)',
-         required: false
-
-  option :host,
-         short: '-h HOST',
-         long: '--host HOST',
-         description: 'Redis Host to connect to',
-         default: '127.0.0.1'
-
-  option :port,
-         short: '-p PORT',
-         long: '--port PORT',
-         description: 'Redis Port to connect to',
-         proc: proc(&:to_i),
-         default: 6379
-
-  option :password,
-         short: '-P PASSWORD',
-         long: '--password PASSWORD',
-         description: 'Redis Password to connect with'
-
   option :scheme,
          description: 'Metric naming scheme, text to prepend to metric',
          short: '-S SCHEME',
          long: '--scheme SCHEME',
          default: "#{Socket.gethostname}.redis"
-
-  option :timeout,
-         description: 'Timeout to connect to redis host',
-         short: '-t TIMEOUT',
-         long: '--timeout TIMEOUT',
-         proc: proc(&:to_i),
-         default: Redis::Client::DEFAULTS[:timeout]
-
-  option :reconnect_attempts,
-         description: 'Reconnect attempts to redis host',
-         short: '-r ATTEMPTS',
-         long: '--reconnect ATTEMPTS',
-         proc: proc(&:to_i),
-         default: Redis::Client::DEFAULTS[:reconnect_attempts]
 
   option :skip_keys_regex,
          description: 'a comma seperated list of keys to be skipped',
@@ -97,27 +62,8 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
          long: '--skipkeys KEYS',
          default: nil
 
-  option :conn_failure_status,
-         long: '--conn-failure-status EXIT_STATUS',
-         description: 'Returns the following exit status for Redis connection failures',
-         default: 'unknown',
-         in: %w(unknown warning critical)
-
   def run
-    options = {
-      timeout: config[:timeout],
-      reconnect_attempts: config[:reconnect_attempts]
-    }
-
-    if config[:socket]
-      options[:path] = config[:socket]
-    else
-      options[:host] = config[:host]
-      options[:port] = config[:port]
-    end
-
-    options[:password] = config[:password] if config[:password]
-    redis = Redis.new(options)
+    redis = Redis.new(default_redis_options)
     skip_keys = if !config[:skip_keys_regex].nil?
                   config[:skip_keys_regex].split(',')
                 else
@@ -149,6 +95,6 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
     ok
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
   end
 end

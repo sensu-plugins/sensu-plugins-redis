@@ -13,41 +13,10 @@
 
 require 'sensu-plugin/check/cli'
 require 'redis'
+require_relative '../lib/redis_client_options'
 
 class RedisListLengthCheck < Sensu::Plugin::Check::CLI
-  option :socket,
-         short: '-s SOCKET',
-         long: '--socket SOCKET',
-         description: 'Redis socket to connect to (overrides Host and Port)',
-         required: false
-
-  option :host,
-         short: '-h HOST',
-         long: '--host HOST',
-         description: 'Redis Host to connect to',
-         required: false,
-         default: '127.0.0.1'
-
-  option :port,
-         short: '-p PORT',
-         long: '--port PORT',
-         description: 'Redis Port to connect to',
-         proc: proc(&:to_i),
-         required: false,
-         default: 6379
-
-  option :database,
-         short: '-n DATABASE',
-         long: '--dbnumber DATABASE',
-         description: 'Redis database number to connect to',
-         proc: proc(&:to_i),
-         required: false,
-         default: 0
-
-  option :password,
-         short: '-P PASSWORD',
-         long: '--password PASSWORD',
-         description: 'Redis Password to connect with'
+  include RedisClientOptions
 
   option :warn,
          short: '-w COUNT',
@@ -69,30 +38,8 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
          description: 'Redis list KEY to check',
          required: true
 
-  option :conn_failure_status,
-         long: '--conn-failure-status EXIT_STATUS',
-         description: 'Returns the following exit status for Redis connection failures',
-         default: 'unknown',
-         in: %w(unknown warning critical)
-
-  option :timeout,
-         short: '-t TIMEOUT',
-         long: '--timeout TIMEOUT',
-         description: 'Redis connection timeout',
-         proc: proc(&:to_i),
-         required: false,
-         default: 5
-
   def run
-    options = if config[:socket]
-                { path: config[:socket] }
-              else
-                { host: config[:host], port: config[:port], timeout: config[:timeout] }
-              end
-
-    options[:db] = config[:database]
-    options[:password] = config[:password] if config[:password]
-    redis = Redis.new(options)
+    redis = Redis.new(default_redis_options)
 
     length =  case redis.type(config[:key])
               when 'hash'
@@ -111,6 +58,6 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
       ok "Redis list #{config[:key]} length (#{length}) is below thresholds"
     end
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
   end
 end
