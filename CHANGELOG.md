@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Fixed
+- ensure that `--socket` option is properly parsed and takes precedence over `--host`/`--port` (@mbyczkowski)
 
 ## [2.3.0] - 2017-11-12
 ### Added
