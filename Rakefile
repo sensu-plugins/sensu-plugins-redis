@@ -6,8 +6,6 @@ require 'rubocop/rake_task'
 require 'yard'
 require 'yard/rake/yardoc_task'
 
-args = [:spec, :make_bin_executable, :yard, :rubocop, :check_binstubs]
-
 YARD::Rake::YardocTask.new do |t|
   OTHER_PATHS = %w().freeze
   t.files = ['lib/**/*.rb', 'bin/**/*.rb', OTHER_PATHS]
@@ -37,4 +35,22 @@ task :check_binstubs do
   end
 end
 
-task default: args
+Kitchen::RakeTasks.new
+
+desc 'Alias for kitchen:all'
+task :integration do
+  Kitchen.logger = Kitchen.default_file_logger
+  @loader = Kitchen::Loader::YAML.new(project_config: './.kitchen.yml')
+  config = Kitchen::Config.new(loader: @loader)
+  threads = []
+  config.instances.each do |instance|
+    threads << Thread.new do
+      instance.test(:always)
+    end
+  end
+  threads.map(&:join)
+end
+
+task default: %i(make_bin_executable yard rubocop check_binstubs integration)
+
+task quick: %i(make_bin_executable yard rubocop check_binstubs)
