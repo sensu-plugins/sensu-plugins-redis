@@ -50,9 +50,9 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          default: "#{Socket.gethostname}.redis"
 
   option :key,
-         short: '-k KEY',
+         short: '-k KEY1,KEY2',
          long: '--key KEY',
-         description: 'Redis list KEY to check',
+         description: 'Comma separated list of keys to check',
          required: true
 
   option :conn_failure_status,
@@ -62,6 +62,7 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          in: %w(unknown warning critical)
 
   def run
+    redis_keys = config[:key].split(',')
     options = if config[:socket]
                 { path: socket }
               else
@@ -72,7 +73,9 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
     options[:password] = config[:password] if config[:password]
     redis = Redis.new(options)
 
-    output "#{config[:scheme]}.#{config[:key]}.items", redis.llen(config[:key])
+    redis_keys.each do |key|
+      output "#{config[:scheme]}.#{key}.items", redis.llen(key)
+    end
     ok
   rescue
     send(config[:conn_failure_status], "Could not connect to Redis server on #{config[:host]}:#{config[:port]}")

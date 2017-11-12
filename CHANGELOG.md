@@ -6,6 +6,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 ### Added
+- metrics-redis-llen.rb - Support passing multiple comma separated keys (@Evesy)
 - Integration tests (@evesy)
 
 ## [2.2.2] - 2017-11-03
