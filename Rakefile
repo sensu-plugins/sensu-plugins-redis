@@ -5,15 +5,7 @@ require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'yard'
 require 'yard/rake/yardoc_task'
-
-desc 'Don\'t run Rubocop for unsupported versions'
-begin
-  args = if RUBY_VERSION >= '2.0.0'
-           [:spec, :make_bin_executable, :yard, :rubocop, :check_binstubs]
-         else
-           [:spec, :make_bin_executable, :yard]
-         end
-end
+require 'kitchen/rake_tasks'
 
 YARD::Rake::YardocTask.new do |t|
   OTHER_PATHS = %w().freeze
@@ -44,4 +36,22 @@ task :check_binstubs do
   end
 end
 
-task default: args
+Kitchen::RakeTasks.new
+
+desc 'Alias for kitchen:all'
+task :integration do
+  Kitchen.logger = Kitchen.default_file_logger
+  @loader = Kitchen::Loader::YAML.new(project_config: './.kitchen.yml')
+  config = Kitchen::Config.new(loader: @loader)
+  threads = []
+  config.instances.each do |instance|
+    threads << Thread.new do
+      instance.test(:always)
+    end
+  end
+  threads.map(&:join)
+end
+
+task default: %i(make_bin_executable yard rubocop check_binstubs integration)
+
+task quick: %i(make_bin_executable yard rubocop check_binstubs)
