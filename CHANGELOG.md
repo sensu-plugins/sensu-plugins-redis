@@ -5,11 +5,13 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [2.3.0] - 2017-11-12
 ### Added
 - metrics-redis-llen.rb - Support passing multiple comma separated keys (@Evesy)
 - Integration tests (@evesy)
 
-## [2.2.2] - 2017-11-03
+## [2.2.2] - 2017-11-11
 ### Fixed
 - check-redis-key.rb: Fix the wording of the check output on warning/critical states (@evesy)
 
@@ -121,7 +123,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.2...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.0...HEAD
+[2.3.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.2...2.3.0
 [2.2.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.1...2.2.2
 [2.2.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.0...2.2.1
 [2.2.0]:https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.1.0...2.2.0
