@@ -18,5 +18,5 @@ end
 
 describe command("#{check} -P foobared --pattern *_key -w 3 -c 2") do
   its(:exit_status) { should eq 2 }
-  its(:stdout) { should match(Regexp.new(Regexp.escape('below the warning limit'))) }
+  its(:stdout) { should match(Regexp.new(Regexp.escape('below the critical limit'))) }
 end
