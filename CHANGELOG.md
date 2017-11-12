@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Fixed
+- check-redis-key.rb: Fix the wording of the check output on warning/critical states (@evesy)
 
 ## [2.2.1] - 2017-09-14
 ### Fixed

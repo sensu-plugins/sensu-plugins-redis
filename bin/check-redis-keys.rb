@@ -96,9 +96,9 @@ class RedisKeysCheck < Sensu::Plugin::Check::CLI
     length = redis.keys(config[:pattern]).size
 
     if length < config[:crit]
-      critical "'keys #{config[:pattern]}' returned #{length} keys, which is below the warning limit of #{config[:crit]}"
+      critical "'keys #{config[:pattern]}' returned #{length} keys, which is below the critical limit of #{config[:crit]}"
     elsif length < config[:warn]
-      warning "'keys #{config[:pattern]}' returned #{length} keys, which is below the critical limit of #{config[:warn]}"
+      warning "'keys #{config[:pattern]}' returned #{length} keys, which is below the warning limit of #{config[:warn]}"
     else
       ok "Redis list #{config[:pattern]} length is above thresholds"
     end
