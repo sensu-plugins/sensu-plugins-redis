@@ -23,8 +23,8 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
       critical msg
     end
   rescue KeyError
-    critical "Redis server on #{redis_conn_info} is not master and does not have master_link_status"
+    critical "Redis server on #{redis_endpoint} is not master and does not have master_link_status"
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

@@ -58,6 +58,6 @@ class RedisListLengthCheck < Sensu::Plugin::Check::CLI
       ok "Redis list #{config[:key]} length (#{length}) is below thresholds"
     end
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

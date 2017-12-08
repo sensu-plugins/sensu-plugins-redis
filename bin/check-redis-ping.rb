@@ -41,6 +41,6 @@ class RedisPing < Sensu::Plugin::Check::CLI
       critical 'Redis did not respond to the ping command'
     end
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

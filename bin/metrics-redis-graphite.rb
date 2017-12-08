@@ -95,6 +95,6 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
     ok
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

@@ -74,6 +74,6 @@ class RedisChecks < Sensu::Plugin::Check::CLI
       ok "Redis memory usage: #{used_memory}% is below defined limits"
     end
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

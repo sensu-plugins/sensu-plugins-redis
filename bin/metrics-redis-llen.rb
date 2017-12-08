@@ -35,6 +35,6 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
     end
     ok
   rescue
-    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_conn_info}")
+    send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

@@ -24,7 +24,7 @@ module RedisClientOptions
     opts
   end
 
-  def redis_conn_info
+  def redis_endpoint
     if config[:socket]
       "unix://#{config[:socket]}"
     else

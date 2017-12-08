@@ -34,12 +34,12 @@ describe 'DummyRedisCheck', '#run' do
   it 'output conn info for host:port' do
     args = %w(--host 10.0.0.1 --port 3456)
     check = DummyRedisCheck.new(args)
-    expect(check.redis_conn_info).to eq '10.0.0.1:3456'
+    expect(check.redis_endpoint).to eq '10.0.0.1:3456'
   end
 
   it 'output conn info for host:port' do
     args = %w(--socket /some/path/redis.sock --host 10.0.0.1 --port 3456)
     check = DummyRedisCheck.new(args)
-    expect(check.redis_conn_info).to eq 'unix:///some/path/redis.sock'
+    expect(check.redis_endpoint).to eq 'unix:///some/path/redis.sock'
   end
 end
