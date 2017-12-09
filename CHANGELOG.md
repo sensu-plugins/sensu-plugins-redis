@@ -6,6 +6,9 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+### Fixed
+- locked `development_dependency` of `mixlib-shellout` on to fix ruby 2.1 support (@majormoses)
+
 ## [2.3.1] - 2017-12-08
 ### Fixed
 - ensure that `--socket` option is properly parsed and takes precedence over `--host`/`--port` (@mbyczkowski)
