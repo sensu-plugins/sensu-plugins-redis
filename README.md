@@ -10,6 +10,7 @@
 
 ## Files
  * bin/check-redis-info.rb
+ * bin/check-redis-keys.rb
  * bin/check-redis-list-length.rb
  * bin/check-redis-memory.rb
  * bin/check-redis-memory-percentage.rb
@@ -25,3 +26,6 @@
 [Installation and Setup](http://sensu-plugins.io/docs/installation_instructions.html)
 
 ## Notes
+
+[Developer Guidelines](http://sensu-plugins.io/docs/developer_guidelines.html)
+[Testing](http://sensu-plugins.io/docs/testing.html)

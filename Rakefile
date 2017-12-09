@@ -36,6 +36,11 @@ task :check_binstubs do
   end
 end
 
+desc 'Run unit tests only'
+RSpec::Core::RakeTask.new(:unit) do |r|
+  r.pattern = FileList['**/**/*_spec.rb'].exclude(/test\/integration\//)
+end
+
 Kitchen::RakeTasks.new
 
 desc 'Alias for kitchen:all'
@@ -54,4 +59,4 @@ end
 
 task default: %i(make_bin_executable yard rubocop check_binstubs integration)
 
-task quick: %i(make_bin_executable yard rubocop check_binstubs)
+task quick: %i(make_bin_executable yard rubocop check_binstubs unit)
