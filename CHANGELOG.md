@@ -6,6 +6,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+## [2.3.2] - 2017-12-21
 ### Fixed
 - locked `development_dependency` of `mixlib-shellout` on to fix ruby 2.1 support (@majormoses)
 
@@ -130,7 +131,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.2...HEAD
+[2.3.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.1...2.3.2
 [2.3.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.0...2.3.1
 [2.3.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.2...2.3.0
 [2.2.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.1...2.2.2
