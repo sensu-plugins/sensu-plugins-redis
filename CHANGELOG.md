@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- check-redis-connections-available.rb: checks the number of connections available (@nishiki)
 
 ## [2.3.2] - 2017-12-21
 ### Fixed

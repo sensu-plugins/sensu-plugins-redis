@@ -16,6 +16,7 @@
  * bin/check-redis-memory-percentage.rb
  * bin/check-redis-ping.rb
  * bin/check-redis-slave-status.rb
+ * bin/check-redis-connections-available.rb
  * bin/metrics-redis-graphite.rb
  * bin/metrics-redis-llen.rb
 
