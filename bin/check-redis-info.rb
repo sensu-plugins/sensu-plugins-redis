@@ -45,7 +45,7 @@ class RedisSlaveCheck < Sensu::Plugin::Check::CLI
     else
       critical "Redis #{config[:redis_info_key]} is #{redis.info.fetch(config[:redis_info_key].to_s)}!"
     end
-  rescue
+  rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

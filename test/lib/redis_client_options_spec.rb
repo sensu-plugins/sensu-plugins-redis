@@ -12,19 +12,19 @@ end
 
 describe 'DummyRedisCheck', '#run' do
   it 'accepts config' do
-    args = %w(--host 127.0.0.1 --password foobar)
+    args = %w[--host 127.0.0.1 --password foobar]
     check = DummyRedisCheck.new(args)
     expect(check.config[:password]).to eq 'foobar'
   end
 
   it 'sets socket option accordingly' do
-    args = %w(--socket /some/path/redis.sock)
+    args = %w[--socket /some/path/redis.sock]
     check = DummyRedisCheck.new(args)
     expect(check.config[:socket]).to eq '/some/path/redis.sock'
   end
 
   it 'prefers socket option over host:port' do
-    args = %w(--host 10.0.0.1 -port 3456 --socket /some/path/redis.sock)
+    args = %w[--host 10.0.0.1 -port 3456 --socket /some/path/redis.sock]
     check = DummyRedisCheck.new(args)
     expect(check.default_redis_options[:path]).to eq '/some/path/redis.sock'
     expect(check.default_redis_options[:host]).to be_nil
@@ -32,13 +32,13 @@ describe 'DummyRedisCheck', '#run' do
   end
 
   it 'output conn info for host:port' do
-    args = %w(--host 10.0.0.1 --port 3456)
+    args = %w[--host 10.0.0.1 --port 3456]
     check = DummyRedisCheck.new(args)
     expect(check.redis_endpoint).to eq '10.0.0.1:3456'
   end
 
   it 'output conn info for host:port' do
-    args = %w(--socket /some/path/redis.sock --host 10.0.0.1 --port 3456)
+    args = %w[--socket /some/path/redis.sock --host 10.0.0.1 --port 3456]
     check = DummyRedisCheck.new(args)
     expect(check.redis_endpoint).to eq 'unix:///some/path/redis.sock'
   end

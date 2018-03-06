@@ -8,9 +8,9 @@ require 'yard/rake/yardoc_task'
 require 'kitchen/rake_tasks'
 
 YARD::Rake::YardocTask.new do |t|
-  OTHER_PATHS = %w().freeze
+  OTHER_PATHS = %w[].freeze
   t.files = ['lib/**/*.rb', 'bin/**/*.rb', OTHER_PATHS]
-  t.options = %w(--markup-provider=redcarpet --markup=markdown --main=README.md --files CHANGELOG.md)
+  t.options = %w[--markup-provider=redcarpet --markup=markdown --main=README.md --files CHANGELOG.md]
 end
 
 RuboCop::RakeTask.new
@@ -57,6 +57,6 @@ task :integration do
   threads.map(&:join)
 end
 
-task default: %i(make_bin_executable yard rubocop check_binstubs integration)
+task default: %i[make_bin_executable yard rubocop check_binstubs integration]
 
-task quick: %i(make_bin_executable yard rubocop check_binstubs unit)
+task quick: %i[make_bin_executable yard rubocop check_binstubs unit]

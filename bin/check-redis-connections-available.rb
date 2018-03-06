@@ -57,8 +57,7 @@ class RedisConnectionsAvailable < Sensu::Plugin::Check::CLI
     else
       ok "There are #{conn_available} connections available (#{clients}/#{maxclients})"
     end
-
-  rescue
+  rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

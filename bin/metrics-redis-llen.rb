@@ -34,7 +34,7 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
       output "#{config[:scheme]}.#{key}.items", redis.llen(key)
     end
     ok
-  rescue
+  rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end
