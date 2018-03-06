@@ -28,3 +28,8 @@ RegexpLiteral:
 
 Style/Documentation:
   Enabled: false
+
+# tests can be slow
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'

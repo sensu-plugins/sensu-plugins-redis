@@ -57,7 +57,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
 
     redis_info = redis.info
     max_memory = redis_info.fetch('maxmemory', 0).to_i
-    if max_memory == 0
+    if max_memory.zero?
       max_memory = redis_info.fetch('total_system_memory', system_memory).to_i
     end
     memory_in_use = redis_info.fetch('used_memory').to_i.fdiv(1024) # used memory in KB (KiloBytes)
@@ -73,7 +73,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     else
       ok "Redis memory usage: #{used_memory}% is below defined limits"
     end
-  rescue
+  rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

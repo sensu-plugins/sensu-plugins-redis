@@ -72,7 +72,7 @@ module RedisClientOptions
              long: '--conn-failure-status EXIT_STATUS',
              description: 'Returns the following exit status for Redis connection failures',
              default: 'critical',
-             in: %w(unknown warning critical)
+             in: %w[unknown warning critical]
 
       option :timeout,
              short: '-t TIMEOUT',

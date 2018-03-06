@@ -42,7 +42,7 @@ class RedisChecks < Sensu::Plugin::Check::CLI
     else
       ok "Redis memory usage: #{used_memory}KB is below defined limits"
     end
-  rescue
+  rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end

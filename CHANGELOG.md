@@ -6,10 +6,18 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+### Security
+- updated rubocop dependency to `~> 0.51.0` per: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8418. (@majormoses)
+
+### Breaking Changes
+- removed ruby `< 2.1` support (@majormoses)
+
+### Changed
+- appeased the cops (@majormoses)
+
 ## [2.4.0] - 2018-03-14
 ### Added
 - check-redis-connections-available.rb: checks the number of connections available (@nishiki)
-
 ## [2.3.2] - 2017-12-21
 ### Fixed
 - locked `development_dependency` of `mixlib-shellout` on to fix ruby 2.1 support (@majormoses)

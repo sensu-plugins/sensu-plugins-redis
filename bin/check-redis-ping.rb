@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
-#  encoding: UTF-8
+
 #   <script name>
 #
 # DESCRIPTION:
@@ -40,7 +40,7 @@ class RedisPing < Sensu::Plugin::Check::CLI
     else
       critical 'Redis did not respond to the ping command'
     end
-  rescue
+  rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
   end
 end
