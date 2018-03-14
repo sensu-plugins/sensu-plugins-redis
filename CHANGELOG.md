@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [2.4.0] - 2018-03-14
 ### Added
 - check-redis-connections-available.rb: checks the number of connections available (@nishiki)
 
@@ -133,7 +135,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.2...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.4.0...HEAD
+[2.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.2...2.4.0
 [2.3.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.1...2.3.2
 [2.3.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.0...2.3.1
 [2.3.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.2.2...2.3.0
