@@ -6,6 +6,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+## [3.0.1] - 2018-03-28
 ### Security
 - updated yard dependency to `~> 0.9.11` per: https://nvd.nist.gov/vuln/detail/CVE-2017-17042 (@majormoses)
 
@@ -147,7 +148,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.4.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.1...HEAD
+[3.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.4.0...3.0.0
 [2.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.2...2.4.0
 [2.3.2]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.1...2.3.2
