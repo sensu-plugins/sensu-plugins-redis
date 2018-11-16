@@ -70,7 +70,7 @@ module RedisClientOptions
              description: 'Redis Password to connect with'
 
       option :scheme,
-             short: '-s SCHEME',
+             short: '-S SCHEME',
              long: '--scheme SCHEME',
              description: 'Redis transport protocol to use',
              required: false,
