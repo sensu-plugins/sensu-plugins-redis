@@ -14,7 +14,7 @@ module RedisClientOptions
     opts[:password] = config[:password] if config[:password]
     opts[:timeout]  = config[:timeout]  if config[:timeout]
     opts[:db]       = config[:database] if config[:database]
-    opts[:scheme]   = config[:scheme] if config[:scheme]
+    opts[:scheme]   = config[:transport] if config[:transport]
 
     if config[:socket]
       opts[:path] = config[:socket]
@@ -69,12 +69,13 @@ module RedisClientOptions
              long: '--password PASSWORD',
              description: 'Redis Password to connect with'
 
-      option :scheme,
-             short: '-S SCHEME',
-             long: '--scheme SCHEME',
+      option :transport,
+             short: '-T TRANSPORT',
+             long: '--transport TRANSPORT',
              description: 'Redis transport protocol to use',
              required: false,
-             default: Redis::Client::DEFAULTS[:scheme]
+             default: Redis::Client::DEFAULTS[:scheme],
+             in: %w[redis rediss]
 
       option :conn_failure_status,
              long: '--conn-failure-status EXIT_STATUS',
