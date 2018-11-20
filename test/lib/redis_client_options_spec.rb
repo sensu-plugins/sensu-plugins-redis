@@ -42,4 +42,11 @@ describe 'DummyRedisCheck', '#run' do
     check = DummyRedisCheck.new(args)
     expect(check.redis_endpoint).to eq 'unix:///some/path/redis.sock'
   end
+
+  it 'sets transport protocol' do
+    args = %w[--transport redis]
+    check = DummyRedisCheck.new(args)
+    expect(check.config[:transport]).to eq 'redis'
+    expect(check.default_redis_options[:scheme]).to eq 'redis'
+  end
 end
