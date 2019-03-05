@@ -51,7 +51,8 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     'used_memory_lua_human',
     'used_memory_peak_human',
     'used_memory_peak_human',
-    'used_memory_peak_perc'
+    'used_memory_peak_perc',
+    'used_memory_rss_human'
   ].freeze
 
   option :scheme,

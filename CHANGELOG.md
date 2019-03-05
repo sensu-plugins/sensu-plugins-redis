@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Changed
+- metrics-redis-graphite.rb: update list of skip keys in `SKIP_KEYS_REGEX` (@boutetnico)
 
 ## [3.1.0] - 2019-03-04
 ### Added
