@@ -5,8 +5,17 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [3.1.0] - 2019-03-04
+### Added
+- added a `--transport (redis|rediss)` option to allow connecting to redis via TLS (@mindriot88)
+
 ### Changed
 - metrics-redis-graphite.rb: update list of skip keys in `SKIP_KEYS_REGEX` (@boutetnico)
+
+### Removed
+- commented out integration testing for now :sadpanda: as it appears there was some change to redis and our bootstrap is not working the way it was originally used. The disable should be temp and when someone has the time to work through it we should be good to bring this back in. (@majormoses)
+- removed testing from tagged releases for EOL versions of ruby, this should still test them on push to master but this reduces the ammount of time that it takes to make a release (@majormoses)
 
 ## [3.0.1] - 2018-03-28
 ### Security
@@ -150,7 +159,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.0...HEAD
+[3.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.1...3.1.0
 [3.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.4.0...3.0.0
 [2.4.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.3.2...2.4.0
