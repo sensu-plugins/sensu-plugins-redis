@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SensuPluginsRedis
   module Version
     MAJOR = 3

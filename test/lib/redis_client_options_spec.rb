@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require_relative '../spec_helper.rb'
 require_relative '../../lib/redis_client_options.rb'
 require 'redis'
