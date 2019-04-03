@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'redis'
 require 'sensu-plugin/metric/cli'
 

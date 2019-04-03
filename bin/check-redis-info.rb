@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 #
 # Checks checks variables from redis INFO http://redis.io/commands/INFO
 #

@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 #
 # Checks number of keys matching a keys command are above the provided
 # warn/critical levels
