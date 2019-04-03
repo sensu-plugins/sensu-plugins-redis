@@ -5,7 +5,9 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
-### Changed
+
+## [3.1.1] - 2019-04-02
+### Fixed
 - metrics-redis-graphite.rb: update list of skip keys in `SKIP_KEYS_REGEX` (@boutetnico)
 
 ## [3.1.0] - 2019-03-04
@@ -162,6 +164,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 - initial release
 
 [Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.0...HEAD
+[3.1.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.1...3.1.0
 [3.0.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/2.4.0...3.0.0
