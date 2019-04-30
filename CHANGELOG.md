@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- `metrics-redis-keys.rb` metric about the number of keys matching a given pattern
 
 ## [4.0.0] - 2019-04-24
 ### Breaking Changes
