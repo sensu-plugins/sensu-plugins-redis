@@ -13,7 +13,7 @@ require 'sensu-plugin/metric/cli'
 require 'redis'
 require_relative '../lib/redis_client_options'
 
-class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
+class RedisKeysNumberMetric < Sensu::Plugin::Metric::CLI::Graphite
   include RedisClientOptions
 
   option :scheme,
@@ -23,14 +23,13 @@ class RedisListLengthMetric < Sensu::Plugin::Metric::CLI::Graphite
          default: "#{Socket.gethostname}.redis"
 
   option :metricname,
-         short: '-m METRICNAME',
+         short: '-M METRICNAME',
          long: '--metric-name METRICNAME',
          description: 'Name of the metric key. Defaults to "keys"',
          required: false,
          default: 'keys'
 
   option :pattern,
-         short: '-p PATTERN',
          long: '--pattern PATTERN',
          description: 'Argument passed into keys command. Defaults to *',
          required: false,
