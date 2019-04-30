@@ -19,6 +19,7 @@
  * bin/check-redis-connections-available.rb
  * bin/metrics-redis-graphite.rb
  * bin/metrics-redis-llen.rb
+ * bin/metrics-redis-keys.rb
 
 ## Usage
 
