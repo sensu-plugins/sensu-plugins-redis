@@ -1,12 +1,14 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines ](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md).
+This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md).
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [4.1.0] - 2019-05-06
 ### Added
-- `metrics-redis-keys.rb` metric about the number of keys matching a given pattern
+- `metrics-redis-keys.rb` metric about the number of keys matching a given pattern (@ydkn)
 
 ## [4.0.0] - 2019-04-24
 ### Breaking Changes
@@ -170,7 +172,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.0.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.1.0...HEAD
+[4.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.0.0...4.0.0
 [4.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.1...4.0.0
 [3.1.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.1...3.1.0
