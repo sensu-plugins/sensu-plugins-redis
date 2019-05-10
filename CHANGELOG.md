@@ -5,6 +5,8 @@ This CHANGELOG follows the format listed at [Our CHANGELOG Guidelines](https://g
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [4.2.0] - 2019-05-09
 ### Added
 - Travis build automation to generate Sensu Asset tarballs that can be used n conjunction with Sensu provided ruby runtime assets and the Bonsai Asset Index
 
@@ -174,8 +176,9 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.1.0...HEAD
-[4.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.0.0...4.0.0
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.2.0...HEAD
+[4.2.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.1.0...4.2.0
+[4.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.0.0...4.1.0
 [4.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.1...4.0.0
 [3.1.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.0.1...3.1.0
