@@ -127,7 +127,7 @@ If you're using an earlier version of sensuctl, you can download the asset defin
 type: Asset
 api_version: core/v2
 metadata:
-  name: sensu-plugins-logs
+  name: sensu-plugins-redis
 spec:
   url: https://assets.bonsai.sensu.io/bfe5bc7de4ab00e71fc3017737cb501ae076bd1f/sensu-plugins-redis_4.2.0_centos_linux_amd64.tar.gz
   sha512: 5df87e7d2c4db85e6a4bdf1f1eb802b2baef933542528e09b3a36d10019ab93e37a7fde7ba3c06334cd22908135ad8704cb5fbef1d1e608f32a2446322222f3b
