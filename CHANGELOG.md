@@ -8,6 +8,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ### Added
 - Updated asset build targets to support centos6
+- Removed centos from bonsai asset definition
 
 ### Added
 - Travis build automation to generate Sensu Asset tarballs that can be used n conjunction with Sensu provided ruby runtime assets and the Bonsai Asset Index
