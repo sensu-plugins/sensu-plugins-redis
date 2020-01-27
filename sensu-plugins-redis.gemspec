@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'date'
@@ -21,10 +21,10 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.executables            = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
   s.homepage               = 'https://github.com/sensu-plugins/sensu-plugins-redis'
   s.license                = 'MIT'
-  s.metadata               = { 'maintainer'         => 'sensu-plugin',
+  s.metadata               = { 'maintainer' => 'sensu-plugin',
                                'development_status' => 'active',
-                               'production_status'  => 'unstable - testing recommended',
-                               'release_draft'      => 'false',
+                               'production_status' => 'unstable - testing recommended',
+                               'release_draft' => 'false',
                                'release_prerelease' => 'false' }
   s.name                   = 'sensu-plugins-redis'
   s.platform               = Gem::Platform::RUBY
