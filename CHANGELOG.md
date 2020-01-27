@@ -13,6 +13,10 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - Travis build automation to generate Sensu Asset tarballs that can be used n conjunction with Sensu provided ruby runtime assets and the Bonsai Asset Index
 
+### Changed
+- Updated rubocop dependency to `~> 0.79.0`
+- Remediated issues identified by rubocop upgrade
+
 ## [4.1.0] - 2019-05-06
 ### Added
 - `metrics-redis-keys.rb` metric about the number of keys matching a given pattern (@ydkn)
