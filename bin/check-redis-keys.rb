@@ -49,7 +49,7 @@ class RedisKeysCheck < Sensu::Plugin::Check::CLI
     elsif length < config[:warn]
       warning "'keys #{config[:pattern]}' returned #{length} keys, which is below the warning limit of #{config[:warn]}"
     else
-      ok "Redis list #{config[:pattern]} length is above thresholds"
+      ok "Redis keys #{config[:pattern]} length is above thresholds"
     end
   rescue StandardError
     send(config[:conn_failure_status], "Could not connect to Redis server on #{redis_endpoint}")
