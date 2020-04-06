@@ -6,12 +6,13 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
-### Added
-- Updated asset build targets to support centos6
+## [5.0.0] - 2020-04-06
+### Breaking CHANGES
 - Removed centos from bonsai asset definition
 
 ### Added
 - Travis build automation to generate Sensu Asset tarballs that can be used n conjunction with Sensu provided ruby runtime assets and the Bonsai Asset Index
+- Updated asset build targets to support centos6
 
 ### Changed
 - Updated rubocop dependency to `~> 0.79.0`
@@ -183,7 +184,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/5.0.0...HEAD
+[5.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.1.0...5.0.0
 [4.1.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/4.0.0...4.0.0
 [4.0.0]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.1...4.0.0
 [3.1.1]: https://github.com/sensu-plugins/sensu-plugins-redis/compare/3.1.0...3.1.1
