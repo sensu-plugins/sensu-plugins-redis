@@ -41,7 +41,7 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.add_runtime_dependency 'redis',        '>= 3.3', '< 5.0'
 
   s.add_development_dependency 'bundler',                   '~> 2.1'
-  s.add_development_dependency 'github-markup',             '~> 3.0'
+  s.add_development_dependency 'github-markup',             '~> 4.0'
   s.add_development_dependency 'kitchen-docker',            '~> 2.6'
   s.add_development_dependency 'kitchen-localhost',         '~> 0.3'
   # locked to keep ruby 2.1 support, this is pulled in by test-kitchen
